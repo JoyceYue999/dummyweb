@@ -157,3 +157,10 @@ else:
 st.markdown("---")
 st.caption("🔐 此工具不会存储您的任何数据 - 所有处理都在您的设备上完成")
 st.caption("💡 提示: 每次处理完成后刷新页面可以清除所有数据")
+
+if __name__ == "__main__":
+    # 添加这3行监听代码
+    port = int(os.environ.get("PORT", 5000))
+    # 如果原代码包含 app.run()，请删除原启动命令
+    from waitress import serve  # 依赖已在requirements中
+    serve(app, host="0.0.0.0", port=port)
